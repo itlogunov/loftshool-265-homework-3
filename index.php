@@ -25,7 +25,7 @@ task2($arrData);
 /**
  * Задание #3
  */
-$sumEvenNumbers = task3(4, 'numbers.csv');
+$sumEvenNumbers = task3(90, 'numbers.csv');
 echo 'Сумма четных чисел = ' . $sumEvenNumbers;
 
 /**
