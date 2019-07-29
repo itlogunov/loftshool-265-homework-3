@@ -26,12 +26,12 @@ task2($arrData);
  * Задание #3
  */
 $sumEvenNumbers = task3(90, 'numbers.csv');
-echo 'Сумма четных чисел = ' . $sumEvenNumbers;
+echo 'Сумма четных чисел = ' . $sumEvenNumbers . '<br><br>';
 
 /**
  * Задание 4
  */
 $arrPages = task4('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json');
 foreach ($arrPages as $arrPage) {
-    echo 'pageId = ' . $arrPage['id'] . ', title = ' . $arrPage['title'] . '<br>';
+    echo 'pageId = ' . $arrPage['id'] . '<br>title = ' . $arrPage['title'];
 }
