@@ -105,7 +105,7 @@ function task3(int $amount, string $fileName = 'numbers.csv'): int
 {
     $arrNumbers = [];
     for ($i = 0; $i <= $amount; $i++) {
-        $arrNumbers[] = [mt_rand(1, 100)];
+        $arrNumbers[] = mt_rand(1, 100);
     }
 
     $handle = fopen($fileName, 'w');
@@ -114,20 +114,24 @@ function task3(int $amount, string $fileName = 'numbers.csv'): int
         return false;
     }
 
-    foreach ($arrNumbers as $value) {
-        fputcsv($handle, $value, ',');
-    }
-
+    fputcsv($handle, $arrNumbers, ',');
     fclose($handle);
 
-    $sumEvenNumbers = 0;
     $handle = fopen($fileName, 'r');
-    while ($str = fgetcsv($handle, 10000, ',')) {
-        $value = (int)$str[0];
+    if (!$handle) {
+        echo 'Ошибка открытия файла ' . $fileName;
+        return false;
+    }
+
+    $sumEvenNumbers = 0;
+    $numbers = fgetcsv($handle, 10000, ',');
+    foreach ($numbers as $value) {
+        $value = (int)$value;
         if ($value % 2 == 0) {
             $sumEvenNumbers += $value;
         }
     }
+    fclose($handle);
 
     return $sumEvenNumbers;
 }
